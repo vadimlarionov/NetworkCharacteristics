@@ -1,0 +1,173 @@
+﻿<Window x:Class="LarionovProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Расчёт основных характеристик функционирования сети удалённой связи" Height="400" MinHeight="350" Width="700" MinWidth="650" ResizeMode="CanResize">
+
+    <DockPanel Background="White">
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Выход" Click="Menu_Exit_Click"/>
+            </MenuItem>
+            <MenuItem Header="Справка" Click="Menu_AboutProgram_Click">
+                <MenuItem Header="О программе"/>
+            </MenuItem>
+        </Menu>
+
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem/>
+            <TextBlock Name="StatusBarMessage" Text="Готово"/>
+        </StatusBar>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Исходные данные-->
+            <StackPanel Grid.Row="0" Grid.Column="0" Margin="5,5,0,0">
+                <!--Входящий поток-->
+                <Label Grid.Row="0" Grid.Column="0" Content="Входящий поток" FontWeight="Bold"/>
+                <Grid Margin="30,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" MinWidth="20"/>
+                        <ColumnDefinition Width="{StaticResource InputBoxWidth}"/>
+                        <ColumnDefinition Width="Auto" MinWidth="40"/>
+                        <ColumnDefinition Width="Auto" MinWidth="20"/>
+                        <ColumnDefinition Width="{StaticResource InputBoxWidth}"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="λ=" FontWeight="Bold"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Name="Lambda_TextBox" Text="10" TextAlignment="Center" MaxLength="{StaticResource InputBoxMaxLength}" PreviewTextInput="TextBoxValidateFloat_PreviewTextInput"/>
+                    <Label Grid.Row="0" Grid.Column="2" Content="1/с"/>
+                    <Label Grid.Row="0" Grid.Column="3" Content="k=" FontWeight="Bold"/>
+                    <TextBox Grid.Row="0" Grid.Column="4" Name="K_Input_TextBox" Text="1" TextAlignment="Center" MaxLength="{StaticResource InputBoxMaxLength}" PreviewTextInput="TextBoxValidateFloat_PreviewTextInput"/>
+                </Grid>
+
+                
+                <!--Начальный узел-->
+                <Label Grid.Row="0" Grid.Column="0" Content="Начальный узел" FontWeight="Bold"/>
+                <Grid Margin="30,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" MinWidth="20"/>
+                        <ColumnDefinition Width="{StaticResource InputBoxWidth}"/>
+                        <ColumnDefinition Width="Auto" MinWidth="40"/>
+                        <ColumnDefinition Width="Auto" MinWidth="20"/>
+                        <ColumnDefinition Width="{StaticResource InputBoxWidth}"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="μ=" FontWeight="Bold"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Name="Mu_StartNode_TextBox" Text="14,285" TextAlignment="Center" MaxLength="{StaticResource InputBoxMaxLength}" PreviewTextInput="TextBoxValidateFloat_PreviewTextInput"/>
+                    <Label Grid.Row="0" Grid.Column="2" Content="1/с"/>
+                    <Label Grid.Row="0" Grid.Column="3" Content="k=" FontWeight="Bold"/>
+                    <TextBox Grid.Row="0" Grid.Column="4" Name="K_StartNode_TextBox" Text="1" TextAlignment="Center" MaxLength="{StaticResource InputBoxMaxLength}" PreviewTextInput="TextBoxValidateFloat_PreviewTextInput"/>
+                </Grid>
+
+                
+                <!--Промежуточный узел-->
+                <Label Grid.Row="0" Grid.Column="0" Content="Промежуточный узел" FontWeight="Bold"/>
+                <Grid Margin="30,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" MinWidth="20"/>
+                        <ColumnDefinition Width="{StaticResource InputBoxWidth}"/>
+                        <ColumnDefinition Width="Auto" MinWidth="40"/>
+                        <ColumnDefinition Width="Auto" MinWidth="20"/>
+                        <ColumnDefinition Width="{StaticResource InputBoxWidth}"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="μ=" FontWeight="Bold"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Name="Mu_MiddleNode_TextBox" Text="16,667" TextAlignment="Center" MaxLength="{StaticResource InputBoxMaxLength}" PreviewTextInput="TextBoxValidateFloat_PreviewTextInput"/>
+                    <Label Grid.Row="0" Grid.Column="2" Content="1/с"/>
+                    <Label Grid.Row="0" Grid.Column="3" Content="k=" FontWeight="Bold"/>
+                    <TextBox Grid.Row="0" Grid.Column="4" Name="K_MiddleNode_TextBox" Text="2" TextAlignment="Center" MaxLength="{StaticResource InputBoxMaxLength}" PreviewTextInput="TextBoxValidateFloat_PreviewTextInput"/>
+                </Grid>
+                
+                
+                <!--Конечный узел-->
+                <Label Grid.Row="0" Grid.Column="0" Content="Конечный узел" FontWeight="Bold"/>
+                <Grid Margin="30,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" MinWidth="20"/>
+                        <ColumnDefinition Width="{StaticResource InputBoxWidth}"/>
+                        <ColumnDefinition Width="Auto" MinWidth="40"/>
+                        <ColumnDefinition Width="Auto" MinWidth="20"/>
+                        <ColumnDefinition Width="{StaticResource InputBoxWidth}"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="μ=" FontWeight="Bold"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Name="Mu_EndNode_TextBox" Text="20" TextAlignment="Center" MaxLength="{StaticResource InputBoxMaxLength}" PreviewTextInput="TextBoxValidateFloat_PreviewTextInput"/>
+                    <Label Grid.Row="0" Grid.Column="2" Content="1/с"/>
+                    <Label Grid.Row="0" Grid.Column="3" Content="k=" FontWeight="Bold"/>
+                    <TextBox Grid.Row="0" Grid.Column="4" Name="K_EndNode_TextBox" Text="1" TextAlignment="Center" MaxLength="{StaticResource InputBoxMaxLength}" PreviewTextInput="TextBoxValidateFloat_PreviewTextInput"/>
+                </Grid>
+
+                <Button Content="Рассчитать" HorizontalAlignment="Left" Height="30" Margin="160,10,0,0" Width="90" Click="Calculate_Click" IsDefault="True"/>
+            </StackPanel>
+
+            <!--Результаты-->
+            <Grid Grid.Row="0" Grid.Column="1" Margin="30,5,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <Grid Grid.Row="0" Grid.Column="0">
+                    <Label Content="Результаты" FontWeight="Bold"/>
+                </Grid>
+                
+                <Grid Grid.Row="1" Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Количество заявок в очереди (Q)-->
+                    <Label Grid.Row="0" Grid.Column="0" Content="Q=" FontWeight="Bold" Margin="0,0,0,0"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Name="Q_Result_TextBox" Text="-" TextAlignment="Center" PreviewTextInput="TextBoxValidateFloat_PreviewTextInput" IsReadOnly="True"/>
+                    <Label Grid.Row="0" Grid.Column="2" Content="шт. - Количество заявок в очереди"/>
+
+                    <!--Количество заявок в системе (L)-->
+                    <Label Grid.Row="1" Grid.Column="0" Content="L=" FontWeight="Bold"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Name="L_Result_TextBox" Text="-" TextAlignment="Center" PreviewTextInput="TextBoxValidateFloat_PreviewTextInput" IsReadOnly="True"/>
+                    <Label Grid.Row="1" Grid.Column="2" Content="шт. - Количество заявок в системе"/>
+
+                    <!--Среднее время нахождения в очереди (W)-->
+                    <Label Grid.Row="2" Grid.Column="0" Content="W=" FontWeight="Bold"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Name="W_Result_TextBox" Text="-" TextAlignment="Center" PreviewTextInput="TextBoxValidateFloat_PreviewTextInput" IsReadOnly="True"/>
+                    <Label Grid.Row="2" Grid.Column="2" Content="с. - Среднее время нахождения в очереди"/>
+
+                    <!--Среднее время нахождения в системе (T)-->
+                    <Label Grid.Row="3" Grid.Column="0" Content="T=" FontWeight="Bold"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" Name="T_Result_TextBox" Text="-" TextAlignment="Center" PreviewTextInput="TextBoxValidateFloat_PreviewTextInput" IsReadOnly="True"/>
+                    <Label Grid.Row="3" Grid.Column="2" Content="с. - Среднее время нахождения в системе"/>
+                </Grid>
+            </Grid>
+                
+        </Grid>
+        
+    </DockPanel>
+</Window>
